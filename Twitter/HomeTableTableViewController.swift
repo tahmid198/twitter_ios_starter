@@ -21,6 +21,8 @@ class HomeTableTableViewController: UITableViewController {
         numberOfTweets = 20
         myRefreshControl.addTarget(self, action: #selector(loadTweets), for: .valueChanged)
         self.tableView.refreshControl = myRefreshControl
+        self.tableView.rowHeight = UITableView.automaticDimension //Calcualte height automaticlly
+        self.tableView.estimatedRowHeight = 150 //Give it an estimation of the height to start with; if larger or smaller it will adjust
     }
     
     //Will always casue tweets to appear even after posting one without refreshing; gets call everytime bc view is shown everytime
@@ -105,6 +107,9 @@ class HomeTableTableViewController: UITableViewController {
         if let imageData = data {
             cell.profileImageView.image = UIImage(data: imageData)
         }
+        
+        cell.setFavorite(tweetArray[indexPath.row]["favorited"] as! Bool)
+        cell.tweetId = tweetArray[indexPath.row]["id"] as! Int 
         
         return cell
     }
