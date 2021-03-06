@@ -18,6 +18,7 @@ class LoginViewController: UIViewController {
         
     }
     
+    @IBOutlet weak var onLogin: UIButton!
     @IBAction func onLoginButton(_ sender: Any) {
         
         //Action is linked to button. Once button is clicked we call out API caller with URL. If it works we perform seque, if not we print "Could not login"
@@ -33,7 +34,12 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        onLogin.layer.cornerRadius = 15.0;
+        onLogin.layer.borderWidth = 0.0;
+        //BillAmountLabel.layer.borderColor = UIColor.red.cgColor;
+        onLogin.clipsToBounds = true;
+        
         // Do any additional setup after loading the view.
     }
     

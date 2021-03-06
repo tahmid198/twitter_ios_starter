@@ -15,22 +15,25 @@ class HomeTableTableViewController: UITableViewController {
     
     let myRefreshControl = UIRefreshControl()
     
+    //Only gets called once
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadTweets()//After view did load, do this
-        
+        numberOfTweets = 20
         myRefreshControl.addTarget(self, action: #selector(loadTweets), for: .valueChanged)
-        tableView.refreshControl = myRefreshControl
+        self.tableView.refreshControl = myRefreshControl
+    }
+    
+    //Will always casue tweets to appear even after posting one without refreshing; gets call everytime bc view is shown everytime
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.loadTweets()//Load tweet tables
     }
     
     
     @objc func loadTweets(){
-        
-        numberOfTweets = 20
         let myUrl = "https://api.twitter.com/1.1/statuses/home_timeline.json"
         let myParams = ["count" : numberOfTweets]
         
-       
         //Pulling Tweets, call API, get a bunch of tweet dictionaries
         TwitterAPICaller.client?.getDictionariesRequest(url: myUrl, parameters: myParams as [String : Any], success: { (tweets: [NSDictionary]) in
             
@@ -50,8 +53,8 @@ class HomeTableTableViewController: UITableViewController {
     
     
     
-
-   /* func loadMoreTweets()
+    //Infinite scroll feature...breaks app
+   func loadMoreTweets()
     {
         let myUrl = "https://api.twitter.com/1.1/statuses/home_timeline.json"
         numberOfTweets = numberOfTweets + 20
@@ -76,7 +79,7 @@ class HomeTableTableViewController: UITableViewController {
         if indexPath.row + 1 == tweetArray.count{
             loadMoreTweets()
         }
-    }*/
+    }
     
     
     
@@ -84,6 +87,7 @@ class HomeTableTableViewController: UITableViewController {
         TwitterAPICaller.client?.logout()
         self.dismiss(animated: true, completion: nil)
         UserDefaults.standard.set(false, forKey: "userLoggedIn") //will allow user to log out
+        self.tweetArray.removeAll() //Clear list
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -95,7 +99,7 @@ class HomeTableTableViewController: UITableViewController {
         cell.userNameLabel.text = user["name"] as? String 
         cell.tweetContent.text = tweetArray[indexPath.row]["text"] as? String
         
-        let imageUrl = URL(string: (user["profile_image_url_https"] as? String)!)
+        let imageUrl = URL(string: (user["profile_image_url_https"] as! String))
         let data = try? Data(contentsOf: imageUrl!)
         
         if let imageData = data {
