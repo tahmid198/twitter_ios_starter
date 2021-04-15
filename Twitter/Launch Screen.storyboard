@@ -17,16 +17,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" image="Twitter_Logo_Blue-2" translatesAutoresizingMaskIntoConstraints="NO" id="YHO-BB-oqH">
-                                <rect key="frame" x="41" y="196" width="293" height="275"/>
+                                <rect key="frame" x="59" y="237" width="257" height="193"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="YHO-BB-oqH" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" constant="41" id="7A4-nd-VWQ"/>
-                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="trailing" secondItem="YHO-BB-oqH" secondAttribute="trailing" constant="41" id="Cw2-wB-KFP"/>
-                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="bottom" secondItem="YHO-BB-oqH" secondAttribute="bottom" constant="196" id="Juz-DD-h8T"/>
-                            <constraint firstItem="YHO-BB-oqH" firstAttribute="top" secondItem="Bcu-3y-fUS" secondAttribute="top" constant="196" id="czN-LY-QLf"/>
+                            <constraint firstItem="YHO-BB-oqH" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" constant="59" id="7A4-nd-VWQ"/>
+                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="trailing" secondItem="YHO-BB-oqH" secondAttribute="trailing" constant="59" id="Cw2-wB-KFP"/>
+                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="bottom" secondItem="YHO-BB-oqH" secondAttribute="bottom" constant="237" id="Juz-DD-h8T"/>
+                            <constraint firstItem="YHO-BB-oqH" firstAttribute="top" secondItem="Bcu-3y-fUS" secondAttribute="top" constant="237" id="czN-LY-QLf"/>
                         </constraints>
                     </view>
                 </viewController>
